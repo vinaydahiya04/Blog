@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+
+
+
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+            integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+    
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css"
+        media="screen" charset="utf-8">
+
+
+    <head>
+        
+        <title>{%block title_block%}
+
+            {%endblock%}
+        </title>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse technofont">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand bigbrand " href="{%url 'blog:post_list'%}">BLOGS</a></li>
+                    <li><a class="navbar-link " href="{% url 'blog:about'%}">ABOUT</a></li>
+                    <li><a class="navbar-link " href="https://github.com/vinaydahiya04/">GITHUB</a></li>
+                    <li><a class="navbar-link " href="https://in.linkedin.com/in/vinay-dahiya-3438931b1">LINKEDIN</a></li>
+                </ul>
+                <div class="pull-right">
+                    <ul class="nav navbar-nav">
+                        {% if user.is_authenticated%}
+                        <li>
+                            <a href="{% url 'blog:post_new'%}">NEW BLOG</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'blog:post_draft_list'%}">DRAFTS</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout'%}">LOGOUT</a>
+                        </li>
+                        <li>
+                            <a>WELCOME : {{user.username}} </a>
+                        </li>
+                        {%else%}
+                        <li>
+                            <a href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a>
+                        </li>
+                    
+                        {%endif%}
+                    
+                    </ul>
+                </div>
+
+            </div>
+            
+        </nav>
+
+        <br>
+        <br>
+        <div class="container jumbotron content">
+            {%block body_block%}
+            {%endblock%}
+        </div>
+    </body>
+
+</html>

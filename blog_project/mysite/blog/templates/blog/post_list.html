@@ -1,0 +1,29 @@
+{%extends 'blog/base.html'%}
+
+{%block title_block%}
+POST LIST
+{%endblock%}
+
+{%block body_block%}
+
+
+    <ol>
+            {%for post in post_list%}
+            <li>
+                <div class="post">
+                    <h2><a href="{%url 'blog:post_detail' pk=post.pk%}">{{post.title}}</a></h1>
+                    <div class="date">
+                        <p>Published on: {{post.published_date|date:"d M Y"}}</p>
+                    </div>
+                    <a href="{%url 'blog:post_detail' pk=post.pk%}">Comments: {{post.approve_comments.count}}</a>
+                </div>
+            </li>
+            <hr>
+            
+            {%endfor%}
+
+    </ol>
+
+
+
+{%endblock%}

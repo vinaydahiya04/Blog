@@ -1,0 +1,13 @@
+{%extends 'blog/base.html'%}
+
+{%block title_block%}
+CONFIRM DELETE
+{%endblock%}
+
+{%block body_block%}
+<h1>ARE YOU SURE YOU WANT TO DELETE {{ object }} POST</h1>
+<form method="POST">
+    {%csrf_token%}
+    <input type="submit" class="btn btn-danger" value="Delete Comment">
+</form>
+{%endblock%}
